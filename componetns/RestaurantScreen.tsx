@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { StyleSheet } from 'react-native';
 import { ArrowLeftIcon, ChevronDownIcon, MinusCircleIcon, PlusIcon, QuestionMarkCircleIcon, StarIcon } from 'react-native-heroicons/outline';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
 const RestaurantScreen = () => {
   const route = useRoute();
   const navigation = useNavigation();
   const [isPressed,setIsPressed] = useState<boolean>(false);
-   const OnPress = () => {
+  const dispatch = useDispatch();
+   const OnPress = ():void => {
     setIsPressed(!isPressed);
    }
 
@@ -61,19 +64,19 @@ const RestaurantScreen = () => {
             </TouchableOpacity>
          
           ))}
-             {
-              isPressed && (
-                <>
-                <View>
-                  <View>
-                    <TouchableOpacity>
-                      <MinusCircleIcon size={20} color={'#00CCBB'}/>
-                    </TouchableOpacity>
-                  </View>
-                </View>
-                </>
-              )
-            }
+            <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+            {isPressed ? (
+    <View style={styles.addToCartIcons}>
+      <TouchableOpacity>
+        <PlusIcon style={styles.addToCartIcon} />
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <MinusCircleIcon style={styles.addToCartIcon} />
+      </TouchableOpacity>
+    </View>
+  ) : null}
+</View>
+
         </View>
       </View>
     </ScrollView>
@@ -117,6 +120,19 @@ const styles = StyleSheet.create({
     height: 80,
     borderRadius: 8,
   },
+
+    addToCartIcons: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      // Add any other styles as needed
+    },
+    addToCartIcon: {
+      marginHorizontal: 10, // Adjust as per your design
+      // Add any other styles as needed
+    },
+
+  
 });
 
 export default RestaurantScreen;
