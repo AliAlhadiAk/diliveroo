@@ -11,6 +11,7 @@ import Register from './componetns/Register';
 import { Provider } from 'react-redux'
 import store from './ReduxStore/store';
 
+
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (

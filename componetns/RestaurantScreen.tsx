@@ -11,12 +11,12 @@ const RestaurantScreen = () => {
   const navigation = useNavigation();
   const [isPressed,setIsPressed] = useState<boolean>(false);
   const dispatch = useDispatch();
-   const OnPress = ():void => {
+   const OnPress = ():void  => {
     setIsPressed(!isPressed);
    }
 
   // Access imageUrl from route.params
-  const { imageurl, title, rating, genre, shortdescription }: any = route.params;
+  const { imageurl, title, rating, genre, shortdescription }:any = route.params;
 
   // Simulated menu data (replace with actual API integration)
   const menuItems = [
@@ -60,20 +60,24 @@ const RestaurantScreen = () => {
               <View style={{ flex: 1, marginLeft: 12 }}>
                 <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{item.name}</Text>
                 <Text>{item.price}</Text>
-              </View>
+
+        </View>
             </TouchableOpacity>
+                      
          
           ))}
             <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
             {isPressed ? (
-    <View style={styles.addToCartIcons}>
-      <TouchableOpacity>
-        <PlusIcon style={styles.addToCartIcon} />
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <MinusCircleIcon style={styles.addToCartIcon} />
-      </TouchableOpacity>
-    </View>
+         
+                    <View style={styles.addToCartIcons}>
+                    <TouchableOpacity>
+                      <PlusIcon style={styles.addToCartIcon} color={'#00CCBB'} size={20}/>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                      <MinusCircleIcon style={styles.addToCartIcon}  color={'#00CCBB'} size={20}/>
+                    </TouchableOpacity>
+                  </View>
+
   ) : null}
 </View>
 

@@ -1,5 +1,5 @@
-import { configureStore, createStore } from "@reduxjs/toolkit";
-import basketReducer from './Slices/basketslice'
+import { configureStore } from "@reduxjs/toolkit";
+import basketReducer from "./Slices/basketslice";
 
 const store = configureStore({
     reducer:{
@@ -7,3 +7,4 @@ const store = configureStore({
     }
 })
 export default store
+
